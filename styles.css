@@ -29,7 +29,12 @@ body {
   gap: 24px;
   align-items: center;
   justify-content: center;
+  margin-top: 50px;
 }
-.gallery-link:hover {
-  cursor: url(./icons/cursor.png), zoom-in;
+.gallery-image {
+  transition: transform 0.25s;
+}
+.gallery-image:hover {
+  cursor: url(./icons/cursor.png), auto;
+  transform: scale(1.05);
 }

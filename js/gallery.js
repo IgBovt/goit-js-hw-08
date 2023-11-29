@@ -88,3 +88,15 @@ const addImagesToGallery = (images) => {
 const listRef = document.querySelector(".gallery");
 const imgMarkup = addImagesToGallery(images);
 listRef.insertAdjacentHTML("beforeend", imgMarkup);
+
+const imgRef = document.querySelector(".gallery-image");
+listRef.addEventListener("click", handImageClick);
+
+function handImageClick(evt) {
+  evt.preventDefault();
+  if (!evt.target.classList.contains("gallery-image")) {
+    return;
+  } else {
+    console.log(evt.target.dataset.source);
+  }
+}
