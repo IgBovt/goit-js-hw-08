@@ -19,3 +19,17 @@ a {
 img {
   display: block;
 }
+body {
+  background-color: #fff;
+}
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.gallery-link:hover {
+  cursor: url(./icons/cursor.png), zoom-in;
+}

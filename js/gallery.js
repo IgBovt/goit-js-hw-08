@@ -66,15 +66,17 @@ const images = [
 
 const addImagesToGallery = (images) => {
   return images
-    .map(({ preview, description }) => {
+    .map(({ preview, original, description }) => {
       return `
     <li class="gallery-item">
-    <a class="gallery-link" href="large-image.jpg">
+    <a class="gallery-link" href="${preview}">
         <img
         class="gallery-image"
         src="${preview}"
-        data-source="large-image.jpg"
+        data-source="${original}"
         alt="${description}"
+        width="360"
+        height="200"
         />
     </a>
     </li>
