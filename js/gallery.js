@@ -64,6 +64,8 @@ const images = [
   },
 ];
 
+// ===== MAKING GALLERY from array ======= //
+// ===== MAKING GALLERY from array ======= //
 const addImagesToGallery = (images) => {
   return images
     .map(({ preview, original, description }) => {
@@ -85,26 +87,39 @@ const addImagesToGallery = (images) => {
     .join("");
 };
 
+// ====== ADD IMAGES TO GALLERY ======= //
 const listRef = document.querySelector(".gallery");
 const imgMarkup = addImagesToGallery(images);
 listRef.insertAdjacentHTML("beforeend", imgMarkup);
 
+// ==== MAKING CLICKS (EventList) TO IMAGES AND ALL LIST =====  //
 const imgRef = document.querySelector(".gallery-image");
 listRef.addEventListener("click", handImageClick);
+
+// ===== MAKING LIBRARY FUNCTION, THAT OPENS and CLOSES MODAL WINDOW ===== //
+function makeModalWindow(evt) {
+  const instance = basicLightbox.create(`
+    <img src="${evt.target.dataset.source}" width="1112" height="640">
+`);
+  instance.show();
+
+  window.addEventListener("keydown", (evt) => {
+    if (instance.visible() && evt.code === "Escape") {
+      instance.close();
+    }
+  });
+}
+
+// ===== MAKING FINAL FUNCTION, THAT:
+//  - REMOVE DEFAULT RELOAD
+//  - DELETE EventList from UL (general list)
+//  - CALL MODAL WINDOW FUNCTION
 
 function handImageClick(evt) {
   evt.preventDefault();
   if (!evt.target.classList.contains("gallery-image")) {
     return;
   } else {
-    const instance = basicLightbox.create(`
-    <img src="${evt.target.dataset.source}" width="1112" height="640">
-`);
-    instance.show();
-    window.addEventListener("keydown", (evt) => {
-      if (instance.visible() && evt.code === "Escape") {
-        instance.close();
-      }
-    });
+    makeModalWindow(evt);
   }
 }
