@@ -97,6 +97,10 @@ function handImageClick(evt) {
   if (!evt.target.classList.contains("gallery-image")) {
     return;
   } else {
-    console.log(evt.target.dataset.source);
+    const instance = basicLightbox.create(`
+    <img src="${evt.target.dataset.source}" width="1112" height="640">
+`);
+
+    instance.show();
   }
 }
